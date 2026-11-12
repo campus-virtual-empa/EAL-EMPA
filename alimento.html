@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimento de Esperanza — EAL EMPA</title>
+    <style>
+        /* =========================================================
+           1. ESTILOS BASE Y ESTRUCTURA DEL CAMPUS LMS (AUTOCONTENIDOS)
+           ========================================================= */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333333;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar Superior */
+        .top-bar-campus {
+            background-color: #b9dbe9;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #a3c9db;
+            font-size: 0.85rem;
+            color: #2c3e50;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-logo {
+            height: 36px !important;
+            width: auto !important;
+            max-width: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .top-bar-title {
+            font-weight: bold;
+            color: #1a365d;
+            text-decoration: none;
+        }
+
+        .top-bar-breadcrumb {
+            color: #4a5568;
+            font-size: 0.8rem;
+        }
+
+        .top-bar-breadcrumb a {
+            color: #2b6cb0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .top-bar-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sub-bar Ajustada */
+        .sub-bar-campus {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 24px;
+            background-color: #f2f4f7;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .sub-bar-titulo-destacado {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #7c8895;
+            letter-spacing: 0.2px;
+            text-decoration: none;
+        }
+
+        .sub-bar-titulo-destacado:hover {
+            color: #4a5568;
+        }
+
+        /* Layout Principal */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-column {
+            min-width: 0;
+        }
+
+        /* Sidebar Column Izquierda */
+        .sidebar-column {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            height: fit-content;
+            overflow: hidden;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-item {
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .sidebar-item:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.15s ease;
+        }
+
+        .sidebar-link:hover {
+            background-color: #f7fafc;
+        }
+
+        .sidebar-item.active .sidebar-link {
+            background-color: #ffe5ec;
+            color: #b83dba;
+            font-weight: bold;
+            border-left: 4px solid #b83dba;
+        }
+
+        .sidebar-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.75;
+        }
+
+        .sidebar-item.active .sidebar-icon {
+            opacity: 1;
+        }
+
+        /* Barra Superior de Navegación Interna */
+        .view-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn-lms-indice {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: #ffffff;
+            color: #2d3748;
+            border: 1px solid #cbd5e0;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.15s ease;
+        }
+
+        .btn-lms-indice:hover {
+            background-color: #f7fafc;
+        }
+
+        /* Encabezado del Recurso */
+        .resource-header {
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .resource-category {
+            display: block;
+            font-size: 0.82rem;
+            color: #718096;
+            margin-bottom: 4px;
+        }
+
+        .resource-title {
+            font-size: 1.35rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin: 0;
+        }
+
+        /* =========================================================
+           2. COMPONENTE MULTIMEDIA: ALIMENTO DE ESPERANZA (2 VIDEOS)
+           ========================================================= */
+        .dual-video-showcase {
+            width: 100%;
+            max-width: 800px;
+            background-color: #ffe3fe;
+            padding: 16px 12px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 18px;
+            border-radius: 4px;
+        }
+
+        .dual-video-card {
+            flex: 1 1 300px;
+            max-width: 370px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dual-video-caption {
+            width: 100%;
+            text-align: center;
+            padding: 6px 8px 10px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #333333;
+            line-height: 1.35;
+        }
+
+        .dual-video-frame-wrap {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dual-video-frame-wrap iframe {
+            width: 100%;
+            max-width: 370px;
+            height: 480px;
+            border: 0;
+            display: block;
+            border-radius: 4px;
+        }
+
+        /* Pie de Firma Unificado */
+        .lms-footer-credits {
+            text-align: center;
+            margin-top: 25px;
+            padding: 10px 0;
+            font-size: 0.75rem;
+            color: #718096;
+            letter-spacing: 0.3px;
+        }
+
+        /* Responsividad General */
+        @media screen and (max-width: 850px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-column {
+                order: -1;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .dual-video-showcase {
+                padding: 14px 10px;
+                gap: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado Principal Campus INFOD / EMPA -->
+    <header class="top-bar-campus">
+        <div class="top-bar-left">
+            <a href="index.html" title="Ir al inicio">
+                <img src="https://ik.imagekit.io/BiblioDigitalEmpa/Iconos/Generales/Campus_EMPA.png?updatedAt=1793014819517" alt="Campus EMPA" class="top-bar-logo">
+            </a>
+            <a href="index.html" class="top-bar-title">Escuela de Música Popular de Avellaneda</a>
+            <span class="top-bar-breadcrumb">
+                <a href="index.html">EAL EMPA</a> &gt; 
+                <a href="lactancia.html">Lactancia y Salud</a> &gt; Cosas Para Mirar
+            </span>
+        </div>
+        <div class="top-bar-right"></div>
+    </header>
+
+    <!-- Sub-Barra con Título del Módulo -->
+    <div class="sub-bar-campus">
+        <a href="index.html" class="sub-bar-titulo-destacado">EAL EMPA</a>
+    </div>
+
+    <!-- Layout Principal del Aula -->
+    <div class="main-layout">
+        
+        <!-- Sidebar Lateral Izquierdo -->
+        <aside class="sidebar-column">
+            <ul class="sidebar-list">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        <span>Espacio Amigo</span>
+                    </a>
+                </li>
+                <li class="sidebar-item active">
+                    <a href="lactancia.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                        <span>Lactancia y Salud</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="noti.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        <span>Noti EAL</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Columna de Contenido Principal -->
+        <main class="content-column">
+
+            <!-- Toolbar Superior de Regreso -->
+            <div class="view-toolbar">
+                <a href="lactancia.html" class="btn-lms-indice">&lt; Volver a Lactancia y Salud</a>
+            </div>
+
+            <!-- Cabecera del Recurso -->
+            <div class="resource-header">
+                <span class="resource-category">Cosas Para Mirar</span>
+                <h1 class="resource-title">Alimento de Esperanza</h1>
+            </div>
+
+            <!-- Componente Multimedia: Dos Videos Verticales -->
+            <div class="dual-video-showcase">
+                
+                <!-- Video 1 -->
+                <div class="dual-video-card">
+                    <div class="dual-video-caption">
+                        La leche humana salva a bebés
+                    </div>
+                    <div class="dual-video-frame-wrap">
+                        <iframe src="https://drive.google.com/file/d/1xYeP588ULAaVoueewS0oRj-g8lNIHAc4/preview?wmode=transparent" title="La leche humana salva a bebés" allow="autoplay"></iframe>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="dual-video-card">
+                    <div class="dual-video-caption">
+                        Donación: alimento de Esperanza
+                    </div>
+                    <div class="dual-video-frame-wrap">
+                        <iframe src="https://drive.google.com/file/d/12miHM4SkzcV6MzZOQ9F-nLc9fETAEg3z/preview?wmode=transparent" title="Donación: alimento de Esperanza" allow="autoplay"></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Firma Institucional Unificada -->
+            <div class="lms-footer-credits">
+                Mariana Bresolin | Diseño y Desarrollo Pedagógico
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>

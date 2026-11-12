@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lactancia y Salud — EAL EMPA | Escuela de Música Popular de Avellaneda</title>
+    <style>
+        /* =========================================================
+           ESTILOS BASE Y ESTRUCTURA DEL CAMPUS LMS (AUTOCONTENIDOS)
+           ========================================================= */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333333;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar Superior */
+        .top-bar-campus {
+            background-color: #b9dbe9;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #a3c9db;
+            font-size: 0.85rem;
+            color: #2c3e50;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-logo {
+            height: 36px !important;
+            width: auto !important;
+            max-width: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .top-bar-title {
+            font-weight: bold;
+            color: #1a365d;
+            text-decoration: none;
+        }
+
+        .top-bar-breadcrumb {
+            color: #4a5568;
+            font-size: 0.8rem;
+        }
+
+        .top-bar-breadcrumb a {
+            color: #2b6cb0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .top-bar-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sub-bar Ajustada */
+        .sub-bar-campus {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 24px;
+            background-color: #f2f4f7;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .sub-bar-titulo-destacado {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #7c8895;
+            letter-spacing: 0.2px;
+            text-decoration: none;
+        }
+
+        .sub-bar-titulo-destacado:hover {
+            color: #4a5568;
+        }
+
+        /* Layout Principal */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-column {
+            min-width: 0;
+        }
+
+        /* Sidebar Column Izquierda */
+        .sidebar-column {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            height: fit-content;
+            overflow: hidden;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-item {
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .sidebar-item:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.15s ease;
+        }
+
+        .sidebar-link:hover {
+            background-color: #f7fafc;
+        }
+
+        .sidebar-item.active .sidebar-link {
+            background-color: #ffe5ec;
+            color: #b83dba;
+            font-weight: bold;
+            border-left: 4px solid #b83dba;
+        }
+
+        .sidebar-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.75;
+        }
+
+        .sidebar-item.active .sidebar-icon {
+            opacity: 1;
+        }
+
+        /* Panel Principal del Programa */
+        .program-main-panel {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .program-section-group {
+            margin-bottom: 25px;
+        }
+
+        .program-section-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2d3748;
+            padding: 10px 14px;
+            background-color: #edf2f7;
+            border-left: 4px solid #b83dba;
+            border-radius: 2px;
+            margin-bottom: 10px;
+        }
+
+        .items-lms-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .item-lms-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            border-bottom: 1px solid #edf2f7;
+            background-color: #ffffff;
+            transition: background 0.15s ease;
+        }
+
+        .item-lms-row:hover {
+            background-color: #f7fafc;
+        }
+
+        .item-lms-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .item-lms-circle-icon {
+            width: 14px;
+            height: 14px;
+            border: 2px solid #3182ce;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .item-lms-link {
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        .item-lms-link:hover {
+            color: #3182ce;
+            text-decoration: underline;
+        }
+
+        .lms-footer-branding {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            opacity: 0.85;
+        }
+
+        .lms-footer-branding img {
+            max-height: 45px;
+            width: auto;
+        }
+
+        .lms-footer-credits {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            font-size: 0.75rem;
+            color: #718096;
+            letter-spacing: 0.3px;
+        }
+
+        @media screen and (max-width: 850px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-column {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado Principal Campus INFOD / EMPA -->
+    <header class="top-bar-campus">
+        <div class="top-bar-left">
+            <a href="index.html" title="Ir al inicio">
+                <img src="https://ik.imagekit.io/BiblioDigitalEmpa/Iconos/Generales/Campus_EMPA.png?updatedAt=1793014819517" alt="Campus EMPA" class="top-bar-logo">
+            </a>
+            <a href="index.html" class="top-bar-title">Escuela de Música Popular de Avellaneda</a>
+            <span class="top-bar-breadcrumb"><a href="index.html">EAL EMPA</a> &gt; Lactancia y Salud</span>
+        </div>
+        <div class="top-bar-right"></div>
+    </header>
+
+    <!-- Sub-Barra con Título del Módulo vinculada a Inicio -->
+    <div class="sub-bar-campus">
+        <a href="index.html" class="sub-bar-titulo-destacado">EAL EMPA</a>
+    </div>
+
+    <!-- Layout Principal del Aula -->
+    <div class="main-layout">
+        
+        <!-- Sidebar Lateral Izquierdo -->
+        <aside class="sidebar-column">
+            <ul class="sidebar-list">
+                <li class="sidebar-item">
+                    <a href="index.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        <span>Espacio Amigo</span>
+                    </a>
+                </li>
+                <li class="sidebar-item active">
+                    <a href="lactancia.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                        <span>Lactancia y Salud</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="noti.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        <span>Noti EAL</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Columna de Contenido Principal -->
+        <main class="content-column">
+
+            <!-- Panel de Contenidos / Unidades del Programa -->
+            <div class="program-main-panel">
+                
+                <!-- SECCIÓN 1: Cosas Para Leer (Orden Alfabético) -->
+                <div class="program-section-group">
+                    <div class="section-header-title">
+                        Cosas Para Leer
+                    </div>
+                    <ul class="items-lms-list">
+                        <li class="item-lms-row">
+                            <div class="item-lms-left">
+                                <div class="item-lms-circle-icon"></div>
+                                <a href="espacio.html" class="item-lms-link">Espacios Amigos de Lactancia</a>
+                            </div>
+                        </li>
+                        <li class="item-lms-row">
+                            <div class="item-lms-left">
+                                <div class="item-lms-circle-icon"></div>
+                                <a href="guia.html" class="item-lms-link">Guía sobre la lactancia y alimentación</a>
+                            </div>
+                        </li>
+                        <li class="item-lms-row">
+                            <div class="item-lms-left">
+                                <div class="item-lms-circle-icon"></div>
+                                <a href="Lactancia_y_trabajo.html" class="item-lms-link">Lactancia y Trabajo</a>
+                            </div>
+                        </li>
+                        <li class="item-lms-row">
+                            <div class="item-lms-left">
+                                <div class="item-lms-circle-icon"></div>
+                                <a href="recomendaciones_para.html" class="item-lms-link">Recomendaciones para la donación de leche humana</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- SECCIÓN 2: Cosas Para Mirar (Orden Alfabético) -->
+                <div class="program-section-group">
+                    <div class="section-header-title">
+                        Cosas Para Mirar
+                    </div>
+                    <ul class="items-lms-list">
+                        <li class="item-lms-row">
+                            <div class="item-lms-left">
+                                <div class="item-lms-circle-icon"></div>
+                                <a href="alimento.html" class="item-lms-link">Alimento de Esperanza</a>
+                            </div>
+                        </li>
+                        <li class="item-lms-row">
+                            <div class="item-lms-left">
+                                <div class="item-lms-circle-icon"></div>
+                                <a href="Encontrando_el_EAL.html" class="item-lms-link">Encontrando el EAL</a>
+                            </div>
+                        </li>
+                        <li class="item-lms-row">
+                            <div class="item-lms-left">
+                                <div class="item-lms-circle-icon"></div>
+                                <a href="Recomendaciones.html" class="item-lms-link">Extracción De Leche Humana</a>
+                            </div>
+                        </li>
+                        <li class="item-lms-row">
+                            <div class="item-lms-left">
+                                <div class="item-lms-circle-icon"></div>
+                                <a href="la_teta_y _goliat.html" class="item-lms-link">La Teta contra Goliat</a>
+                            </div>
+                        </li>
+                        <li class="item-lms-row">
+                            <div class="item-lms-left">
+                                <div class="item-lms-circle-icon"></div>
+                                <a href="Espacio_amigo_lactancia.html" class="item-lms-link">Recomendaciones para la extracción de leche humana</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Footer Institucional -->
+                <div class="lms-footer-branding">
+                    <img src="https://ik.imagekit.io/BiblioDigitalEmpa/Iconos/Generales/Campus_EMPA.png?updatedAt=1793014819517" alt="Campus EMPA">
+                </div>
+
+            </div>
+
+            <!-- FIRMA / CRÉDITOS PEDAGÓGICOS -->
+            <div class="lms-footer-credits">
+                Mariana Bresolin | Diseño y Desarrollo Pedagógico
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>

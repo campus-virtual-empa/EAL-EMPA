@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio — EAL EMPA | Escuela de Música Popular de Avellaneda</title>
+    <style>
+        /* =========================================================
+           1. ESTILOS BASE Y ESTRUCTURA DEL CAMPUS LMS (AUTOCONTENIDOS)
+           ========================================================= */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333333;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar Superior */
+        .top-bar-campus {
+            background-color: #b9dbe9;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #a3c9db;
+            font-size: 0.85rem;
+            color: #2c3e50;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-logo {
+            height: 36px !important;
+            width: auto !important;
+            max-width: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .top-bar-title {
+            font-weight: bold;
+            color: #1a365d;
+        }
+
+        .top-bar-breadcrumb {
+            color: #4a5568;
+            font-size: 0.8rem;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Sub-bar Ajustada */
+        .sub-bar-campus {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 24px;
+            background-color: #f2f4f7;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .sub-bar-titulo-destacado {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #7c8895;
+            letter-spacing: 0.2px;
+        }
+
+        /* Layout Principal */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-column {
+            min-width: 0;
+        }
+
+        /* Sidebar Column Izquierda */
+        .sidebar-column {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            height: fit-content;
+            overflow: hidden;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-item {
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .sidebar-item:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.15s ease;
+        }
+
+        .sidebar-link:hover {
+            background-color: #f7fafc;
+        }
+
+        /* Estado Activo (Espacio Amigo) */
+        .sidebar-item.active .sidebar-link {
+            background-color: #ffe5ec;
+            color: #b83dba;
+            font-weight: bold;
+            border-left: 4px solid #b83dba;
+        }
+
+        .sidebar-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.75;
+        }
+
+        .sidebar-item.active .sidebar-icon {
+            opacity: 1;
+        }
+
+        /* Encabezado Interno del Aula */
+        .aula-header-banner {
+            margin-bottom: 20px;
+        }
+
+        .aula-header-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.3px;
+        }
+
+        /* Banderita + Subtítulo Exactos */
+        .aula-header-sub {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.92rem;
+            color: #a0a0a0;
+            font-style: italic;
+        }
+
+        .bandera-arg-icon {
+            width: 20px;
+            height: 14px;
+            border-radius: 3px;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        /* Título de Bienvenida Centrado */
+        .bienvenida-titulo {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1a365d;
+            margin: 15px 0 20px 0;
+        }
+
+        /* Estilo discreto de firma al pie (Tono gris claro unificado) */
+        .lms-footer-credits {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            font-size: 0.75rem;
+            color: #718096;
+            letter-spacing: 0.3px;
+        }
+
+        /* Responsividad para Móviles y Tabletas */
+        @media screen and (max-width: 850px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-column {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado Principal Campus INFOD / EMPA -->
+    <header class="top-bar-campus">
+        <div class="top-bar-left">
+            <img src="https://ik.imagekit.io/BiblioDigitalEmpa/Iconos/Generales/Campus_EMPA.png?updatedAt=1793014819517" alt="Campus EMPA" class="top-bar-logo">
+            <span class="top-bar-title">Escuela de Música Popular de Avellaneda</span>
+            <span class="top-bar-breadcrumb">EAL EMPA &gt; Inicio</span>
+        </div>
+        <div class="top-bar-right"></div>
+    </header>
+
+    <!-- Sub-Barra con Título del Módulo -->
+    <div class="sub-bar-campus">
+        <span class="sub-bar-titulo-destacado">EAL EMPA</span>
+    </div>
+
+    <!-- Layout Principal del Aula -->
+    <div class="main-layout">
+        
+        <!-- Sidebar Lateral Izquierdo -->
+        <aside class="sidebar-column">
+            <ul class="sidebar-list">
+                <li class="sidebar-item active">
+                    <a href="index.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        <span>Espacio Amigo</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="lactancia.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                        <span>Lactancia y Salud</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="noti.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        <span>Noti EAL</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Columna de Contenido Principal -->
+        <main class="content-column">
+            
+            <!-- Banner de Cabecera con Bandera y Subtítulo Exactos -->
+            <div class="aula-header-banner">
+                <h1 class="aula-header-title">EAL EMPA</h1>
+                <div class="aula-header-sub">
+                    <svg class="bandera-arg-icon" viewBox="0 0 20 14">
+                        <rect width="20" height="4.66" fill="#74acdf"/>
+                        <rect y="4.66" width="20" height="4.66" fill="#ffffff"/>
+                        <rect y="9.33" width="20" height="4.66" fill="#74acdf"/>
+                        <circle cx="10" cy="7" r="1.3" fill="#f6b40e"/>
+                    </svg>
+                    <span>Aula en Español (Argentina)</span>
+                </div>
+            </div>
+
+            <!-- Título Principal de Bienvenida -->
+            <div class="bienvenida-titulo">
+                ¡Bienvenidx a Nuestro EAL EMPA! por una lactancia sana
+            </div>
+
+            <!-- COMPONENTE PRINCIPAL -->
+            <div style="max-width: 800px; width: 100%; margin: 0 auto; background-color: #ffebf1; font-family: 'comic sans ms', sans-serif; box-sizing: border-box; padding: 6px;">
+
+                <!-- CABECERA DE UBICACIÓN -->
+                <div style="display: flex; flex-wrap: wrap; background-color: #ffd9e5; margin-bottom: 6px;">
+                    <div style="flex: 1 1 300px; padding: 15px; color: #ff00ff; font-size: 1.25rem; font-style: italic; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box;">
+                        <span style="color: #b83dba;">Ingresando a nuestra Escuela</span> 
+                        <span style="color: #b83dba;">por la Entrada Principal <span style="font-size: 12pt;">(Av.Velez Sárfield)</span></span>
+                        <div style="text-align: center; margin: 15px 0;"><span style="color: #b83dba;">lo encontrás del lado derecho</span></div>
+                        <div style="text-align: right;"><span style="color: #b83dba;">al terminar el escenario.</span></div>
+                    </div>
+                    <div style="flex: 1 1 350px; display: flex; align-items: center; justify-content: center; padding: 5px; box-sizing: border-box;">
+                        <img class="edu_incrustacion" style="max-width: 100%; height: auto; display: block;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1750/1750/imagen_incrustada1.png" border="0" alt="Plano de ubicación" data-edc-id="1750" data-edc-tipo="rep_local">
+                    </div>
+                </div>
+
+                <!-- GALERÍA DE 4 IMÁGENES -->
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; justify-content: center;">
+                    <div style="flex: 1 1 350px; max-width: 390px;">
+                        <img class="edu_incrustacion" style="width: 100%; height: auto; display: block;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1500/1508/imagen_incrustada1.png" border="0" alt="" data-edc-id="1508" data-edc-tipo="rep_local">
+                    </div>
+                    <div style="flex: 1 1 350px; max-width: 390px;">
+                        <img class="edu_incrustacion" style="width: 100%; height: auto; display: block;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1500/1509/imagen_incrustada2.png" border="0" alt="" data-edc-id="1509" data-edc-tipo="rep_local">
+                    </div>
+                    <div style="flex: 1 1 350px; max-width: 390px;">
+                        <img class="edu_incrustacion" style="width: 100%; height: auto; display: block;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1500/1510/imagen_incrustada3.png" border="0" alt="" data-edc-id="1510" data-edc-tipo="rep_local">
+                    </div>
+                    <div style="flex: 1 1 350px; max-width: 390px;">
+                        <img class="edu_incrustacion" style="width: 100%; height: auto; display: block;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1500/1511/imagen_incrustada4.png" border="0" alt="" data-edc-id="1511" data-edc-tipo="rep_local">
+                    </div>
+                </div>
+
+                <!-- SECCIÓN CENTRAL Y TABLA DE TURNOS -->
+                <div style="background-color: #ffd9e5; padding: 15px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; border-radius: 4px; margin-bottom: 12px; width: 100%;">
+                    <img class="edu_incrustacion" style="max-width: 100%; height: auto; display: block;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1500/1512/imagen_incrustada5.png" border="0" alt="" data-edc-id="1512" data-edc-tipo="rep_local">
+                    
+                    <a style="margin-top: 15px; display: block; width: 100%; text-align: center;" rel="noopener noreferrer" href="https://www.argentina.gob.ar/normativa/nacional/ley-26873-218212/texto" target="_blank">
+                        <img class="edu_incrustacion" style="max-width: 100%; height: auto; display: inline-block;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1500/1635/imagen_incrustada1.png" border="0" alt="Ley 26873" data-edc-id="1635" data-edc-tipo="rep_local">
+                    </a>
+
+                    <div style="width: 100%; overflow-x: auto; margin-top: 15px; background-color: rgba(255, 255, 255, 0.4); padding: 6px; border-radius: 4px; box-sizing: border-box;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: center;" border="0">
+                            <thead>
+                                <tr>
+                                    <th style="color: #b83dba; padding: 4px; font-size: 10.5pt; font-weight: bold;">Mañana</th>
+                                    <th style="color: #b83dba; padding: 4px; font-size: 10.5pt; font-weight: bold;">Tarde</th>
+                                    <th style="color: #b83dba; padding: 4px; font-size: 10.5pt; font-weight: bold;">Vespertino</th>
+                                </tr>
+                            </thead>
+                            <tbody style="color: #6a75b5; font-style: italic; font-size: 9.5pt;">
+                                <tr>
+                                    <td style="padding: 4px;">Laura Albornoz</td>
+                                    <td style="padding: 4px;">Hilda Rojas</td>
+                                    <td style="padding: 4px;">Nilda Correa</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 4px;">Julia Arellano</td>
+                                    <td style="padding: 4px;">Patricia Zarrillo</td>
+                                    <td style="padding: 4px;">Debora Barrios</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 4px;">Yesica Diotallevi</td>
+                                    <td style="padding: 4px;"></td>
+                                    <td style="padding: 4px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 4px;">Carolina Gutierrez</td>
+                                    <td style="padding: 4px;"></td>
+                                    <td style="padding: 4px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 4px;">Rubén Ousta</td>
+                                    <td style="padding: 4px;"></td>
+                                    <td style="padding: 4px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 4px;">Silvina Tirao</td>
+                                    <td style="padding: 4px;"></td>
+                                    <td style="padding: 4px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 4px;">Gabriela Visoli</td>
+                                    <td style="padding: 4px;"></td>
+                                    <td style="padding: 4px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN COSAS PARA LEER / MIRAR -->
+                <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-bottom: 12px; width: 100%; box-sizing: border-box;">
+                    
+                    <!-- COLUMNA LEER -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box;">
+                        <div style="color: #b83dba; font-style: italic; margin-bottom: 2px; font-weight: bold; font-size: 10pt; text-align: center;">Cosas para leer</div>
+                        
+                        <a style="display: flex; align-items: center; background-color: #f5f0ff; text-decoration: none; border-radius: 4px; overflow: hidden; min-height: 55px; padding: 2px;" href="guia.html">
+                            <img style="width: 40px; height: 50px; object-fit: cover; display: block; flex-shrink: 0;" src="https://ik.imagekit.io/BiblioDigitalEmpa/Guia_sobre_lactancia.jpg?updatedAt=1794347277859" alt="">
+                            <span style="padding-left: 5px; color: #6a75b5; font-size: 8.5pt; line-height: 1.1; word-break: break-word;">Guía sobre Lactancia y alimentación</span>
+                        </a>
+                        <a style="display: flex; align-items: center; background-color: #f5f0ff; text-decoration: none; border-radius: 4px; overflow: hidden; min-height: 55px; padding: 2px;" href="espacio.html">
+                            <img style="width: 40px; height: 50px; object-fit: cover; display: block; flex-shrink: 0;" src="https://ik.imagekit.io/BiblioDigitalEmpa/Anato_fisio_Salud_libros/Espacio_Amigo.png?updatedAt=1794346581332" alt="">
+                            <span style="padding-left: 5px; color: #6a75b5; font-size: 8.5pt; line-height: 1.1; word-break: break-word;">Espacios de Lactancia</span>
+                        </a>
+                        <a style="display: flex; align-items: center; background-color: #f5f0ff; text-decoration: none; border-radius: 4px; overflow: hidden; min-height: 55px; padding: 2px;" href="recomendaciones_para.html">
+                            <img style="width: 40px; height: 50px; object-fit: cover; display: block; flex-shrink: 0;" src="https://ik.imagekit.io/BiblioDigitalEmpa/Anato_fisio_Salud_libros/Recomendaciones_para.png?updatedAt=1794346581533" alt="">
+                            <span style="padding-left: 5px; color: #6a75b5; font-size: 8.5pt; line-height: 1.1; word-break: break-word;">Conservación, Donación De leche Humana</span>
+                        </a>
+                        <a style="display: flex; align-items: center; background-color: #f5f0ff; text-decoration: none; border-radius: 4px; overflow: hidden; min-height: 55px; padding: 2px;" href="Lactancia_y_trabajo.html">
+                            <img style="width: 40px; height: 50px; object-fit: cover; display: block; flex-shrink: 0;" src="https://ik.imagekit.io/BiblioDigitalEmpa/Anato_fisio_Salud_libros/Lactancia_y_Trabajo.jpg?updatedAt=1794346581360" alt="">
+                            <span style="padding-left: 5px; color: #6a75b5; font-size: 8.5pt; line-height: 1.1; word-break: break-word;">Guía de Trabajo</span>
+                        </a>
+                    </div>
+
+                    <!-- COLUMNA MIRAR -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box;">
+                        <div style="color: #b83dba; font-style: italic; margin-bottom: 2px; font-weight: bold; font-size: 10pt; text-align: center;">Cosas para mirar</div>
+                        
+                        <a style="display: flex; align-items: center; background-color: #f5f0ff; text-decoration: none; border-radius: 4px; overflow: hidden; min-height: 55px; padding: 2px;" href="la_teta_y _goliat.html">
+                            <img style="width: 40px; height: 50px; object-fit: cover; display: block; flex-shrink: 0;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1500/1559/imagen_incrustada1.png" alt="">
+                            <span style="padding-left: 5px; color: #6a75b5; font-size: 8.5pt; line-height: 1.1; word-break: break-word;">La Teta contra Goliat</span>
+                        </a>
+                        <a style="display: flex; align-items: center; background-color: #f5f0ff; text-decoration: none; border-radius: 4px; overflow: hidden; min-height: 55px; padding: 2px;" href="alimento.html">
+                            <img style="width: 40px; height: 50px; object-fit: cover; display: block; flex-shrink: 0;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1250/1486/imagen_incrustada1.png" alt="">
+                            <span style="padding-left: 5px; color: #6a75b5; font-size: 8.5pt; line-height: 1.1; word-break: break-word;">Alimento de Esperanza</span>
+                        </a>
+                        <a style="display: flex; align-items: center; background-color: #f5f0ff; text-decoration: none; border-radius: 4px; overflow: hidden; min-height: 55px; padding: 2px;" href="Recomendaciones.html">
+                            <img class="edu_incrustacion" style="width: 40px; height: 50px; object-fit: cover; display: block; flex-shrink: 0;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1750/1751/imagen_incrustada1.png" border="0" alt="" data-edc-id="1751" data-edc-tipo="rep_local">
+                            <span style="padding-left: 5px; color: #6a75b5; font-size: 8.5pt; line-height: 1.1; word-break: break-word;">Extracción De Leche Humana</span>
+                        </a>
+                        <a style="display: flex; align-items: center; background-color: #f5f0ff; text-decoration: none; border-radius: 4px; overflow: hidden; min-height: 55px; padding: 2px;" href="Espacio_amigo_lactancia.html">
+                            <img class="edu_incrustacion" style="width: 40px; height: 50px; object-fit: cover; display: block; flex-shrink: 0;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/2750/2912/imagen_incrustada1.png" border="0" alt="" data-edc-id="2912" data-edc-tipo="rep_local">
+                            <span style="padding-left: 5px; color: #6a75b5; font-size: 8.5pt; line-height: 1.1; word-break: break-word;">Encontrando el EAL</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- BANNER PIE -->
+                <div style="background-color: #ffd9e5; padding: 12px; border-radius: 4px; text-align: center; width: 100%; box-sizing: border-box;">
+                    <img class="edu_incrustacion" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" src="https://empa-bue.infd.edu.ar/aula/archivos/repositorio/1500/1694/imagen_incrustada1.png" border="0" alt="" data-edc-id="1694" data-edc-tipo="rep_local">
+                </div>
+
+            </div>
+
+            <!-- FIRMA / CRÉDITOS PEDAGÓGICOS -->
+            <div class="lms-footer-credits">
+                Mariana Bresolin | Diseño y Desarrollo Pedagógico
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
